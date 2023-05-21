@@ -155,9 +155,9 @@ The project is a basic web application built using Java and the Spring framework
 
 👤 **Santosh Guggilla**
 
-* GitHub: [Santosh Guggilla](https://github.com/AjinkyaPersonal)
+* GitHub: [Santosh Guggilla](https://github.com/santoshguggilla/Blogging-Project/tree/master/Blogging-Project)
 
-* LinkedIn: [Santosh Guggilla](https://www.linkedin.com/in/ajinkya-padule-04b8541a6/)
+* LinkedIn: [Santosh Guggilla](https://www.linkedin.com/in/santosh-guggilla-bb916b216/)
     
 ---
 
@@ -175,7 +175,7 @@ Give a ⭐️ if this project helped you!
     
 ## 📝 License
 
-Copyright © 2023 [Santosh Guggilla](https://github.com/AjinkyaPersonal).<br />
+Copyright © 2023 [Santosh Guggilla](https://www.linkedin.com/in/santosh-guggilla-bb916b216/).<br />
 
 This project is [MIT]("url") licensed.
     
