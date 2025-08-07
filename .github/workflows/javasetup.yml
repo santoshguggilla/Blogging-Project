@@ -1,0 +1,24 @@
+name: GitHub Context Use Cases
+
+on:
+  workflow_dispatch:
+
+env:
+  GLOBAL_ENV: "This is a global environment variable"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+ 
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'   # Or 'zulu', 'adopt', etc.
+          java-version: '17'
+ 
+      - name: Verify Java Version
+        run: java -version
+ 
