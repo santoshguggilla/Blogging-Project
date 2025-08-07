@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get Output from Job 1
+      #- name: Get Output from Job 1
        # run: echo "Message: ${{ needs.job1.outputs.job_message }}"
 
       - name: Use Secret and Variable
