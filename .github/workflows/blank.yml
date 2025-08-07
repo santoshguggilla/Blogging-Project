@@ -1,0 +1,40 @@
+name: GitHub Context Use Cases
+
+on:
+  workflow_dispatch:
+
+env:
+  GLOBAL_ENV: "This is a global environment variable"
+
+jobs:
+  job1:
+    name: Build Job with Matrix
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java: [11, 17]
+
+    steps:
+      - name: Print Context Values
+        run: |
+          echo "Actor: ${{ github.actor }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "Matrix Java Version: ${{ matrix.java }}"
+          echo "Global Env: $GLOBAL_ENV"
+
+      - name: Save Output
+        id: step1
+        run: echo "job_message=Hello from Job 1 with Java ${{ matrix.java }}" >> $GITHUB_OUTPUT
+
+  job2:
+    name: Dependent Job
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+     
+      - name: Use Secret and Variable
+        run: |
+          echo "Secret: ${{ secrets.MY_SECRET }}"
+          echo "Variable: ${{ vars.MY_VAR }}"
