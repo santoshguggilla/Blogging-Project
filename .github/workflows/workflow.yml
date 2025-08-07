@@ -32,6 +32,7 @@ jobs:
     name: Dependent Job
     needs: job1
     runs-on: ubuntu-latest
+
     steps:
       - name: Get Output from Job 1
         run: echo "Message: ${{ needs.job1.outputs.job_message }}"
