@@ -1,23 +1,42 @@
-name: CI Pipeline
+name: GitHub Context Use Cases
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+
+env:
+  GLOBAL_ENV: "This is a global environment variable"
 
 jobs:
-  build:
+  job1:
+    name: Build Job with Matrix
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        java: [11, 17]
+
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Print Context Values
+        run: |
+          echo "Actor: ${{ github.actor }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "Matrix Java Version: ${{ matrix.java }}"
+          echo "Global Env: $GLOBAL_ENV"
 
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'   # 👈 this is mandatory
-          java-version: '17'
+      - name: Save Output
+        id: step1
+        run: echo "job_message=Hello from Job 1 with Java ${{ matrix.java }}" >> $GITHUB_OUTPUT
 
-      - name: Build with Maven
-        run: mvn clean install
+  job2:
+    name: Dependent Job
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Output from Job 1
+        run: echo "Message: ${{ needs.job1.outputs.job_message }}"
+
+      - name: Use Secret and Variable
+        run: |
+          echo "Secret: ${{ secrets.MY_SECRET }}"
+          echo "Variable: ${{ vars.MY_VAR }}"
