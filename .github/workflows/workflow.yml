@@ -35,7 +35,7 @@ jobs:
 
     steps:
       - name: Get Output from Job 1
-        run: echo "Message: ${{ needs.job1.outputs.job_message }}"
+       # run: echo "Message: ${{ needs.job1.outputs.job_message }}"
 
       - name: Use Secret and Variable
         run: |
